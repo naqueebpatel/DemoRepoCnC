@@ -1,22 +1,22 @@
-import React from "react"
-import AboutCard from "../about/AboutCard"
-import Hblog from "./Hblog"
-import HAbout from "./HAbout"
-import Hero from "./hero/Hero"
-import Hprice from "./Hprice"
-import Testimonal from "./testimonal/Testimonal"
+import React from "react";
+import AboutCard from "../about/AboutCard";
+import Hblog from "./Hblog";
+import HAbout from "./HAbout";
+import Hero from "./hero/Hero";
+import Hprice from "./Hprice";
+import Testimonal from "./testimonal/Testimonal";
+import EnrollNow from './../EnrollNow/EnrollNow';
 
-const Home = () => {
+const Home = ( { toggleModal, setToggleModal } ) =>
+{
   return (
     <>
-      <Hero />
+      <Hero toggleModal={ toggleModal } setToggleModal={ setToggleModal } />
       <AboutCard />
       <HAbout />
       <Testimonal />
-      <Hblog />
-      <Hprice />
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

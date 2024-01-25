@@ -1,36 +1,42 @@
-import React from "react"
-import { testimonal } from "../../../dummydata"
-import Heading from "../../common/heading/Heading"
-import "./style.css"
+import React, { useEffect } from "react";
+import { testimonal } from "../../../dummydata";
+import Heading from "../../common/heading/Heading";
+import "./style.css";
+import AOS from 'aos';
 
-const Testimonal = () => {
+const Testimonal = () =>
+{
+  useEffect( () =>
+  {
+    AOS.init( { duration: 1400 } );
+  }, [] );
   return (
     <>
-      <section className='testimonal padding'>
+      <section className='testimonal padding' data-aos="zoom-out">
         <div className='container'>
           <Heading subtitle='TESTIMONIAL' title='Our Successful Students' />
 
           <div className='content grid2'>
-            {testimonal.map((val) => (
+            { testimonal.map( ( val ) => (
               <div className='items shadow'>
                 <div className='box flex'>
                   <div className='img'>
-                    <img src={val.cover} alt='' />
+                    <img src={ val.cover } alt='' />
                     <i className='fa fa-quote-left icon'></i>
                   </div>
                   <div className='name'>
-                    <h2>{val.name}</h2>
-                    <span>{val.post}</span>
+                    <h2>{ val.name }</h2>
+                    <span>{ val.post }</span>
                   </div>
                 </div>
-                <p>{val.desc}</p>
+                <p>{ val.desc }</p>
               </div>
-            ))}
+            ) ) }
           </div>
         </div>
       </section>
     </>
-  )
-}
+  );
+};
 
-export default Testimonal
+export default Testimonal;

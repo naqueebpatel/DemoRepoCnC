@@ -9,13 +9,20 @@ import Blog from "./components/blog/Blog"
 import Contact from "./components/contact/Contact"
 import Footer from "./components/common/footer/Footer"
 import Home from "./components/home/Home"
+import { useEffect, useState } from "react";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 function App() {
+  const [ toggleModal, setToggleModal ] = useState( false );
+  useEffect(()=>{
+    AOS.init({duration:2000});
+  },[])
   return (
     <>
       <Router>
-        <Header />
+        <Header  toggleModal={toggleModal} setToggleModal={setToggleModal}/>
         <Switch>
-          <Route exact path='/' component={Home} />
+          <Route exact path='/'  render={(props)=>(<Home {...props} toggleModal={toggleModal} setToggleModal={setToggleModal}/>)}/>
           <Route exact path='/about' component={About} />
           <Route exact path='/courses' component={CourseHome} />
           <Route exact path='/team' component={Team} />
