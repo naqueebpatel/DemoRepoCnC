@@ -48,7 +48,7 @@ const Header = ( { toggleModal, setToggleModal } ) =>
           </button>
         </nav>
       </header>
-      { toggleModal && <EnrollNow setToggleModal={ setToggleModal } /> }
+      { toggleModal && <EnrollNow handleModal={ handleModal } /> }
     </>
   );
 };

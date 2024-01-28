@@ -1,29 +1,29 @@
 import React from 'react';
+import CloseIcon from '@mui/icons-material/Close';
 import './enrollnow.css';
-const EnrollNow = ( { setToggleModal } ) =>
+const EnrollNow = ( { handleModal } ) =>
 {
-
+    const handleClick = () =>
+    {
+        handleModal();
+    };
     return (
         <div>
             <section className="ftco-section">
                 <div className="container1">
                     <div className="row1 justify-content-center">
-                        <div className="col-md-6 text-center mb-5">
-                            <h2 className="heading-section">Contact Form #02</h2>
-                        </div>
-                    </div>
-                    <div className="row1 justify-content-center">
-                        <div className="col-md-12">
-                            <div className="wrapper">
-                                <div className="row1 no-gutters">
+                        <div className="col-md-12" style={ { top: "16vh" } }>
+                            <div className="wrapper1">
+                                <div className="row1 no-gutters1">
                                     <div className="col-lg-8 col-md-7 order-md-last d-flex align-items-stretch">
+                                        <CloseIcon className='close-icon' onClick={ handleClick } />
                                         <div className="contact-wrap w-100 p-md-5 p-4">
                                             <h3 className="mb-4">Get in touch</h3>
                                             <div id="form-message-warning" className="mb-4"></div>
                                             <div id="form-message-success" className="mb-4">
                                                 Your message was sent, thank you!
                                             </div>
-                                            <form method="POST" id="contactForm" name="contactForm" className="contactForm">
+                                            <form className="contactForm">
                                                 <div className="row1">
                                                     <div className="col-md-6">
                                                         <div className="form-group">
@@ -55,7 +55,7 @@ const EnrollNow = ( { setToggleModal } ) =>
                                                     </div>
                                                     <div className="col-md-12">
                                                         <div className="form-group">
-                                                            <input type="submit" onClick={ () => setToggleModal( false ) } value="Send Message" className="btn btn-primary" />
+                                                            <input type="submit" onClick={ handleClick } value="Send Message" className="btn btn-primary" />
                                                             <div className="submitting"></div>
                                                         </div>
                                                     </div>

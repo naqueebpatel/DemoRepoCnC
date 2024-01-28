@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import "./courses.css";
 import { coursesCard } from "../../dummydata";
-
+import EnrollNow from './../EnrollNow/EnrollNow';
+import CourseDetailModal from "../modal/CourseDetailModal";
+import { data } from "../data/data";
 const CoursesCard = () =>
 {
+  const [ modal, setModal ] = useState( false );
+  const [ coursedetail, setCourseDetail ] = useState( [] );
+  const handleModal = () =>
+  {
+    setModal( !modal );
+  };
+  const [ CourseModal, setCourseModal ] = useState( false );
+  function handleCourseModal ( id )
+  {
+    setCourseModal( !CourseModal );
+    const course_detail = data.filter( ( course ) => course.id === id );
+    setCourseDetail( course_detail );
+  }
   return (
     <>
       <section className='coursesCard'>
@@ -49,14 +64,16 @@ const CoursesCard = () =>
                 </h3>
               </div>
               <div className="button-container">
-                <button className='outline-all-course-btn'><span>ENROLL NOW !</span></button>
-                <button className="view-course">
+                <button className='outline-all-course-btn' onClick={ handleModal }><span>ENROLL NOW !</span></button>
+                <button className="view-course" onClick={ () => handleCourseModal( val.id ) }>
                   <span>VIEW COURSE</span> <i className='fa fa-long-arrow-alt-right'></i>
                 </button>
               </div>
             </div>
           ) ) }
         </div>
+        { CourseModal && <CourseDetailModal handleCourseModal={ handleCourseModal } coursedetail={ coursedetail } /> }
+        { modal && <EnrollNow handleModal={ handleModal } /> }
       </section>
     </>
   );
